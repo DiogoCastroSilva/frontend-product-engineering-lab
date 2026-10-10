@@ -1,0 +1,14 @@
+{
+  "name": "frontend-product-engineering-lab",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=@fieldnote/fieldnote",
+    "build": "npm run build --workspace=@fieldnote/fieldnote",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  }
+}
