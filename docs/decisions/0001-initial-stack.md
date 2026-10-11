@@ -9,9 +9,7 @@
 
 This repository is a hands-on learning lab for senior frontend and product engineering. The first product is Fieldnote, a fictional environmental fieldwork and biodiversity-monitoring SaaS. The goal is to build realistic product UI while learning modern React/TypeScript architecture, design-system foundations, accessibility, testing, and practical AI-powered experiences.
 
-The project should teach useful production patterns without spending disproportionate effort recreating commodity tooling or building infrastructure before there is a demonstrated need. The Fieldnote app was scaffolded with `create-next-app`. React Compiler remains disabled initially so rendering and performance behavior can be explored explicitly before comparing automatic optimization.
-
-The design system now has two real consumers: the Fieldnote product and a separate Storybook application. This justifies a small shared package, while still avoiding a collection of narrowly split packages or a package-publishing pipeline.
+The design system has two consumers: Fieldnote and a separate Storybook application. This justifies a small shared component package while retaining the existing token package, and avoids a publishing pipeline or many narrowly split packages.
 
 ## Decision drivers
 
@@ -19,126 +17,120 @@ The design system now has two real consumers: the Fieldnote product and a separa
 - Build a cohesive product that exercises components in real screens and states.
 - Reuse mature tools for styling, routing, and complex interaction behavior.
 - Keep the architecture understandable and easy to change.
-- Share one implementation of components and design tokens across Fieldnote and Storybook.
-- Avoid premature publishing, extra packages, backend infrastructure, and unnecessary abstractions.
+- Share one implementation of components and token values across Fieldnote and Storybook.
+- Avoid premature publishing, backend infrastructure, and unnecessary abstractions.
 
 ## Options considered
 
-### Option A — Next.js product app + standalone Storybook app + one shared design-system package
+### Option A — Next.js product + standalone Storybook + shared component and token packages
 
-- **Benefits:** Keeps product and component documentation environments independent; provides a real package boundary; makes both consumers exercise the same components and theme.
-- **Costs and risks:** Requires workspace dependency management and coordination of shared CSS/Tailwind scanning across consumers.
-- **Fit:** Best fit now that Fieldnote and Storybook are separate consumers.
+- **Benefits:** Keeps product and component documentation independent; provides a real package boundary; both consumers exercise the same components and theme.
+- **Costs and risks:** Requires workspace dependency management and coordination of shared CSS/Tailwind scanning.
+- **Fit:** Selected for the current two-consumer learning lab.
 
-### Option B — Keep all components inside the Fieldnote app
+### Option B — Keep components inside Fieldnote
 
 - **Benefits:** Minimal setup and no package boundary.
-- **Costs and risks:** Storybook and the product would not consume a clearly defined shared library; imports and styling could become coupled to Next.js app internals.
-- **Fit:** Was reasonable for a single consumer, but no longer fits the intended architecture.
+- **Costs and risks:** Storybook and the product would not consume a clearly defined shared library; imports and styling could become coupled to Next.js internals.
+- **Fit:** Not suitable for the intended architecture.
 
-### Option C — Split tokens, typography, spacing, and components into separate packages
+### Option C — Split tokens, typography, spacing, and components into many packages
 
 - **Benefits:** Independently versionable and distributable units.
-- **Costs and risks:** Adds dependency, configuration, and maintenance overhead before separate release cycles or consumers require it.
-- **Fit:** Not justified for this learning lab.
+- **Costs and risks:** Adds maintenance overhead before separate release cycles or consumers require it.
+- **Fit:** Not justified. Keep one token package and one component package.
 
-### Option D — Use Vite/React for the Fieldnote product instead of Next.js
+### Option D — Use Vite/React for Fieldnote instead of Next.js
 
-- **Benefits:** Smaller framework surface area for a client-only application.
+- **Benefits:** Smaller framework surface for a client-only app.
 - **Costs and risks:** Less practice with Next.js routing and rendering decisions relevant to product engineering.
-- **Fit:** Not selected for the product. Storybook may use its own React/Vite-based environment because it is a separate component-development application, not a second production app.
+- **Fit:** Not selected. Storybook uses its own React/Vite-based environment because it is a component-development app, not a second production app.
 
 ## Decision
 
-Use the following architecture and stack:
-
 - **Fieldnote:** Next.js with React and TypeScript, styled with Tailwind CSS.
-- **Storybook:** A separate application at `apps/storybook` for isolated component development, interactive examples, and component documentation.
-- **Design system:** One shared package at `packages/design-system`, named `@fieldnote/design-system`, consumed by both Fieldnote and Storybook through the repository's npm workspace.
-- **Design tokens and shared styles:** Owned by the design-system package. Keep color, typography, spacing, radii, and other token categories organized within the package; do not create a separate package for each category.
-- **Components and stories:** Reusable component implementations and their `.stories.tsx` files live in the design-system package. Storybook configuration and its preview environment live in `apps/storybook`.
-- **Package distribution:** Keep the package private and workspace-local. Do not publish it to a registry unless a concrete need appears.
-- **Component implementation:** Build a small set of foundational components ourselves using semantic HTML, TypeScript, tokens, and Tailwind. Adopt accessible primitives such as Radix selectively for complex interactions that require robust keyboard and focus management.
-- **React Compiler:** Keep it disabled initially; reassess after establishing a baseline and identifying a concrete performance question.
-- **shadcn/ui:** Treat it as a reference and potential source of selected patterns, not as a wholesale starter kit.
+- **Storybook:** A separate app at `apps/storybook` for isolated component development, interactive examples, and documentation.
+- **Components:** One private workspace package at `packages/design-system`, named `@fieldnote/design-system`, consumed by both apps.
+- **Tokens:** Retain `packages/tokens` as `@product/tokens` for typed token exports and shared token CSS. The design-system package consumes its CSS entry point. Keep token categories together rather than creating one package per category.
+- **Stories:** Store component implementations and their `.stories.tsx` files together in the design-system package. Storybook configuration and preview environment live in `apps/storybook`.
+- **Distribution:** Keep packages private and workspace-local; do not publish them unless a concrete need appears.
+- **Components:** Build foundational components using semantic HTML, TypeScript, tokens, and Tailwind. Evaluate accessible primitives such as Radix for complex interactions needing robust keyboard and focus management.
+- **React Compiler:** Keep disabled initially; reassess after establishing a baseline and a concrete performance question.
+- **shadcn/ui:** Use as a reference and potential source of selected patterns, not as a wholesale starter kit.
 
-The intended repository boundary is:
+The repository boundary is:
 
 ```text
 apps/
   fieldnote/       # Next.js product and product-specific behavior
   storybook/       # Storybook configuration and documentation environment
 packages/
-  design-system/   # Shared tokens, styles, components, and component stories
+  design-system/   # Components, component stories, and shared theme integration
+  tokens/          # Typed design tokens and token CSS
 ```
 
-The root npm workspace manages these projects and their dependencies. It does not make Storybook and the design-system package the same application.
+The root npm workspace manages the projects and their dependencies. Storybook is an independent app, not part of Fieldnote's runtime.
 
 ## Rationale
 
-This setup provides realistic product-engineering constraints and a genuine shared-library boundary without prematurely introducing publishing or multiple packages. Fieldnote gives components real product use cases; Storybook provides a focused place to inspect component variants, states, interactions, and documentation.
+Fieldnote provides real product use cases; Storybook gives a focused place to inspect component variants, states, interactions, and documentation. The package boundary keeps implementations shared without requiring publishing infrastructure.
 
-Tailwind is a styling tool, not the design system by itself. Tokens, component APIs, accessibility behavior, documentation, and governance still need deliberate design. Shared theme CSS must be consumed by both apps, and Tailwind must be configured to discover utility classes used in the design-system package.
+Tailwind is a styling tool, not the design system by itself. Tokens, component APIs, accessibility behavior, documentation, and governance still need deliberate design. Both consumers load the shared theme stylesheet, and Tailwind must discover utility classes used in the design-system package.
 
-We will avoid rebuilding low-level browser behavior for complex widgets. A simple Button is useful to implement and understand directly; dialog, popover, and menu focus/keyboard behavior are better candidates for mature accessible primitives, with our own styling and API layered on top.
+A simple Button is useful to implement and understand directly. Dialog, popover, and menu focus/keyboard behavior are better candidates for mature accessible primitives, styled with our own API and tokens.
 
 ## Consequences
 
 ### Positive
 
 - The architecture is relevant to modern React/TypeScript product work.
-- Fieldnote screens give components realistic use cases instead of making the design system abstract.
+- Fieldnote screens give components real product use cases.
 - Storybook and Fieldnote consume the same component implementations.
-- Tokens and component APIs have a single source of truth.
+- Typed tokens and CSS theme values have an explicit shared package.
 - Foundational components and their trade-offs remain visible and testable.
-- The project can grow toward accessibility checks, automated tests, and AI features without requiring early publishing infrastructure.
 
-### Negative / trade-offs
+### Trade-offs
 
-- A workspace and package boundary add some configuration compared with a single app.
+- Workspace and package boundaries add configuration.
 - Tailwind and shared CSS need explicit integration in both consumers.
-- Storybook's environment is distinct from Next.js, so framework-specific behavior must be tested in Fieldnote where relevant.
-- Tailwind does not enforce consistency on its own; token conventions and reusable component APIs must do that work.
+- Storybook's environment differs from Next.js, so framework-specific behavior must be tested in Fieldnote.
+- Tailwind does not enforce consistency by itself; token conventions and reusable component APIs must do that work.
 
 ### Risks and mitigations
 
-- **Risk:** Utility classes or one-off styles drift from the intended system.  
-  **Mitigation:** Establish tokens, document component APIs and variants, and review repeated patterns before introducing abstractions.
-- **Risk:** The two consumers end up with different token or CSS behavior.  
-  **Mitigation:** Keep shared tokens/styles in the design-system package and verify the same component in both environments.
-- **Risk:** Accessibility is treated as solved merely by using a primitive.  
-  **Mitigation:** Test keyboard behavior, focus management, semantics, and real user flows.
-- **Risk:** The project grows into infrastructure work before core learning goals are met.  
-  **Mitigation:** Keep one private design-system package; defer registry publishing, extra packages, backend work, and complex automation until a specific need is demonstrated.
+- **Risk:** Utility classes or one-off styles drift from the system. **Mitigation:** Document APIs and variants, and review repeated patterns before introducing abstractions.
+- **Risk:** Consumers get different theme behavior. **Mitigation:** Load shared token CSS and verify components in both environments.
+- **Risk:** Accessibility is assumed to be solved by a primitive. **Mitigation:** Test keyboard behavior, focus management, semantics, and real user flows.
+- **Risk:** Infrastructure work displaces core learning goals. **Mitigation:** Defer publishing, backend work, and extra packages until there is a demonstrated need.
 
 ## Implementation notes
 
-1. Confirm the root npm workspace and consolidate dependency management into the root lockfile.
-2. Align the Fieldnote package name and root scripts with the workspace names.
-3. Convert the existing placeholder `packages/tokens` package into `packages/design-system`; do not retain separate token and component packages.
-4. Scaffold Storybook as an independent app in `apps/storybook`, with configuration isolated there.
-5. Establish shared theme CSS/tokens and configure both consumers to load it. Ensure Tailwind discovers classes in the design-system package.
-6. Implement and export a Button with documented variants, disabled behavior, and visible keyboard focus; write its stories beside the component.
-7. Add Radix only when a component's interaction complexity warrants it.
-8. Record materially separate decisions—such as component testing strategy, token representation, or AI evaluation—in their own ADRs.
+1. Use one root npm workspace install and lockfile.
+2. Align workspace names and root scripts.
+3. Add the design-system package and keep the existing token package as its dependency.
+4. Scaffold Storybook as an independent app in `apps/storybook`.
+5. Load shared theme CSS in both consumers and ensure Tailwind discovers package utility classes.
+6. Implement a Button with variants, disabled/loading behavior, visible keyboard focus, and colocated stories.
+7. Add Radix only when interaction complexity warrants it.
+8. Record materially separate decisions—such as testing strategy or AI evaluation—in their own ADRs.
 
 ## Validation
 
-- [ ] The root npm workspace installs cleanly and uses one root lockfile.
+- [ ] Root workspace install succeeds and uses one lockfile.
 - [ ] Fieldnote starts, lints, type-checks, and builds.
 - [ ] Storybook starts independently from `apps/storybook`.
-- [ ] Storybook renders a component imported from `@fieldnote/design-system`.
-- [ ] Fieldnote imports that same component from the shared package.
-- [ ] Both consumers load the same theme tokens and Tailwind utilities work for package components.
-- [ ] The first Button has semantic HTML, documented variants, disabled behavior, and visible keyboard focus.
-- [ ] At least one complex interaction is evaluated against an accessible primitive before deciding whether to use it.
+- [ ] Storybook renders a component from `@fieldnote/design-system`.
+- [ ] Fieldnote imports that same component from the package.
+- [ ] Both consumers load the same token CSS and package utility classes work.
+- [ ] Button has semantic HTML, documented variants, disabled/loading behavior, and visible keyboard focus.
+- [ ] A complex interaction is evaluated against an accessible primitive before implementation.
 
 ## Revisit when
 
-- A separate release or publishing workflow for the design system becomes necessary.
+- A separate release or publishing workflow becomes necessary.
 - A new consumer requires materially different package boundaries.
-- Next.js adds more complexity than value for the product screens being built.
-- There is a concrete performance case that warrants enabling and evaluating React Compiler.
+- Next.js adds more complexity than value for the product screens.
+- A concrete performance case warrants evaluating React Compiler.
 - A chosen library blocks a required interaction, accessibility need, or styling constraint.
 
 ## References
@@ -146,10 +138,8 @@ We will avoid rebuilding low-level browser behavior for complex widgets. A simpl
 - [Next.js: create-next-app CLI](https://nextjs.org/docs/app/api-reference/cli/create-next-app)
 - [Tailwind CSS: Next.js installation](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
 - [Tailwind CSS: Theme variables](https://tailwindcss.com/docs/theme)
-- [Storybook: Next.js framework](https://storybook.js.org/docs/get-started/frameworks/nextjs)
 - [Storybook: React/Vite framework](https://storybook.js.org/docs/get-started/frameworks/react-vite)
 - [Storybook: Writing stories](https://storybook.js.org/docs/writing-stories)
 - [Radix Primitives: Introduction](https://www.radix-ui.com/primitives/docs/overview/introduction)
-- [Radix Primitives: Accessibility](https://www.radix-ui.com/primitives/docs/overview/accessibility)
 - [W3C: WCAG 2.2 Quick Reference](https://www.w3.org/WAI/WCAG22/quickref/)
 - [shadcn/ui](https://ui.shadcn.com/)
