@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
-export type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
-export type ButtonSize = "sm" | "md" | "lg";
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
+export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Visual intent of the button. */
@@ -16,27 +16,27 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: "bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover)]",
-  secondary: "border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:bg-slate-50",
-  ghost: "bg-transparent text-[var(--color-text)] hover:bg-slate-100",
-  danger: "bg-[var(--color-error)] text-white hover:bg-red-700",
+  primary:
+    'bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover)]',
+  secondary:
+    'border border-[var(--color-primary)] bg-[var(--color-surface)] text-[var(--color-primary)] hover:bg-slate-50',
+  ghost: 'bg-transparent text-[var(--color-primary)] hover:bg-slate-100',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: "min-h-8 px-3 text-sm",
-  md: "min-h-10 px-4 text-sm",
-  lg: "min-h-12 px-5 text-base",
+  sm: 'min-h-8 px-3 text-sm',
+  md: 'min-h-10 px-4 text-sm',
+  lg: 'min-h-12 px-5 text-base',
 };
 
-/** Accessible, semantic button with consistent variants, sizes, and focus treatment. */
 export function Button({
-  variant = "primary",
-  size = "md",
+  variant = 'primary',
+  size = 'md',
   loading = false,
   disabled,
-  className = "",
+  className = '',
   children,
-  type = "button",
+  type = 'button',
   ...props
 }: ButtonProps) {
   const isDisabled = disabled || loading;
@@ -48,21 +48,28 @@ export function Button({
       disabled={isDisabled}
       aria-busy={loading || undefined}
       className={[
-        "inline-flex items-center justify-center gap-2 rounded-md font-semibold",
-        "transition-colors duration-150",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2",
-        "disabled:cursor-not-allowed disabled:opacity-50",
+        'inline-flex items-center justify-center gap-2 rounded-md font-semibold',
+        'transition-colors duration-150',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2',
+        'disabled:cursor-not-allowed disabled:opacity-50',
         variantClasses[variant],
         sizeClasses[size],
         className,
-      ].filter(Boolean).join(" ")}
+      ]
+        .filter(Boolean)
+        .join(' ')}
     >
       {loading ? (
         <>
-          <span aria-hidden="true" className="size-4 animate-spin rounded-full border-2 border-current border-r-transparent" />
+          <span
+            aria-hidden="true"
+            className="size-4 animate-spin rounded-full border-2 border-current border-r-transparent"
+          />
           <span>{children}</span>
         </>
-      ) : children}
+      ) : (
+        children
+      )}
     </button>
   );
 }

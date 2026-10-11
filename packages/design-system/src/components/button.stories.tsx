@@ -27,11 +27,10 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {};
 export const Secondary: Story = { args: { variant: 'secondary' } };
 export const Ghost: Story = { args: { variant: 'ghost' } };
-export const Destructive: Story = {
-  args: { variant: 'danger', children: 'Delete record' },
-};
+
 export const Loading: Story = { args: { loading: true, children: 'Saving' } };
 export const Disabled: Story = { args: { disabled: true } };
+
 export const Sizes: Story = {
   render: (args) => (
     <div className="flex flex-wrap items-center gap-3">
