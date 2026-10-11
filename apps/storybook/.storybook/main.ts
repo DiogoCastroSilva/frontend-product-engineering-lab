@@ -11,7 +11,7 @@ const getAbsolutePath = (packageName: string): string =>
   path.dirname(require.resolve(path.join(packageName, "package.json")));
 
 const config: StorybookConfig = {
-  stories: ["../../packages/design-system/src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: ["../../../packages/design-system/src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
     getAbsolutePath("@storybook/addon-a11y"),
     getAbsolutePath("@storybook/addon-docs"),
