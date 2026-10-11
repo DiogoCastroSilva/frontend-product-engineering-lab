@@ -1,0 +1,22 @@
+@theme {
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-ink: #172033;
+  --color-muted: #5b6475;
+  --color-surface: #ffffff;
+  --color-canvas: #f6f8fb;
+  --radius-control: 0.625rem;
+}
+
+:root {
+  --ds-color-brand: #2563eb;
+  --ds-color-brand-hover: #1d4ed8;
+  --ds-color-ink: #172033;
+  --ds-color-muted: #5b6475;
+  --ds-color-border: #d8deea;
+  --ds-color-surface: #ffffff;
+  --ds-radius-control: 0.625rem;
+  --ds-focus-ring: 0 0 0 3px rgb(37 99 235 / 30%);
+}
