@@ -1,13 +1,13 @@
-import type { StorybookConfig } from "@storybook/react-vite";
+import { createRequire } from "node:module";
 import path from "node:path";
+import type { StorybookConfig } from "@storybook/react-vite";
 
-// Resolve Storybook framework and addons from this workspace explicitly.
-// This avoids preset lookup failures in npm workspaces/monorepos.
-const _require = typeof require === "undefined" ? import.meta : require;
+const require = createRequire(import.meta.url);
+
+// Resolve Storybook framework and addons explicitly. This avoids preset lookup
+// failures caused by package resolution from the root of an npm workspace.
 const getAbsolutePath = (packageName: string): string =>
-  path
-    .dirname(_require.resolve(path.join(packageName, "package.json")))
-    .replace(/^file:\/\//, "");
+  path.dirname(require.resolve(path.join(packageName, "package.json")));
 
 const config: StorybookConfig = {
   stories: ["../../packages/design-system/src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
