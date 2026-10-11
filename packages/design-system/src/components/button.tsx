@@ -16,10 +16,10 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: "bg-brand-600 text-white hover:bg-brand-700",
-  secondary: "border border-[var(--ds-color-border)] bg-white text-[var(--ds-color-ink)] hover:bg-slate-50",
-  ghost: "bg-transparent text-[var(--ds-color-ink)] hover:bg-slate-100",
-  danger: "bg-red-600 text-white hover:bg-red-700",
+  primary: "bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover)]",
+  secondary: "border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:bg-slate-50",
+  ghost: "bg-transparent text-[var(--color-text)] hover:bg-slate-100",
+  danger: "bg-[var(--color-error)] text-white hover:bg-red-700",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -48,7 +48,7 @@ export function Button({
       disabled={isDisabled}
       aria-busy={loading || undefined}
       className={[
-        "inline-flex items-center justify-center gap-2 rounded-[var(--ds-radius-control)] font-semibold",
+        "inline-flex items-center justify-center gap-2 rounded-md font-semibold",
         "transition-colors duration-150",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2",
         "disabled:cursor-not-allowed disabled:opacity-50",

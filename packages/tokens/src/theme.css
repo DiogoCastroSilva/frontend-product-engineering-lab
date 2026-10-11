@@ -1,0 +1,31 @@
+@theme inline {
+  --font-sans: var(--font-inter);
+
+  --text-h1: var(--font-size-h1);
+  --text-h1--line-height: var(--line-height-h1);
+  --text-h1--font-weight: var(--font-weight-h1);
+
+  --text-h2: var(--font-size-h2);
+  --text-h2--line-height: var(--line-height-h2);
+  --text-h2--font-weight: var(--font-weight-h2);
+
+  --text-h3: var(--font-size-h3);
+  --text-h3--line-height: var(--line-height-h3);
+  --text-h3--font-weight: var(--font-weight-h3);
+
+  --text-h4: var(--font-size-h4);
+  --text-h4--line-height: var(--line-height-h4);
+  --text-h4--font-weight: var(--font-weight-h4);
+
+  --text-h5: var(--font-size-h5);
+  --text-h5--line-height: var(--line-height-h5);
+  --text-h5--font-weight: var(--font-weight-h5);
+
+  --text-h6: var(--font-size-h6);
+  --text-h6--line-height: var(--line-height-h6);
+  --text-h6--font-weight: var(--font-weight-h6);
+
+  --text-body: var(--font-size-body);
+  --text-body--line-height: var(--line-height-body);
+  --text-body--font-weight: var(--font-weight-body);
+}
