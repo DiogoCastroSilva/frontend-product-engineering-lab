@@ -1,5 +1,6 @@
 import { createRequire } from "node:module";
 import path from "node:path";
+import tailwindcss from "@tailwindcss/vite";
 import type { StorybookConfig } from "@storybook/react-vite";
 
 const require = createRequire(import.meta.url);
@@ -18,6 +19,11 @@ const config: StorybookConfig = {
   framework: {
     name: getAbsolutePath("@storybook/react-vite"),
     options: {},
+  },
+  async viteFinal(viteConfig) {
+    viteConfig.plugins ??= [];
+    viteConfig.plugins.push(tailwindcss());
+    return viteConfig;
   },
   docs: {
     autodocs: "tag",
