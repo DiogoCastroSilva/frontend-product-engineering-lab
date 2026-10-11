@@ -1,4 +1,4 @@
-import { Button } from "@fieldnote/design-system";
+import { WorkspaceActions } from "./workspace-actions";
 
 export default function Home() {
   return (
@@ -18,10 +18,7 @@ export default function Home() {
             <p className="max-w-xl text-lg leading-8 text-muted">
               Keep field observations, species records, and team work in one calm, dependable workspace.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <Button size="lg" onClick={() => alert("Fieldnote workspace is ready for the next learning milestone.")}>Explore workspace</Button>
-              <Button size="lg" variant="secondary" onClick={() => window.open("http://localhost:6006", "_blank", "noopener,noreferrer")}>Open component library</Button>
-            </div>
+            <WorkspaceActions />
           </div>
 
           <aside className="rounded-2xl border border-[var(--ds-color-border)] bg-white p-6 shadow-sm">
