@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@import "@product/tokens/tokens.css";
+
+/* Include shared package source when Tailwind runs from a consuming app. */
+@source "./";
+
+:root {
+  color-scheme: light;
+}

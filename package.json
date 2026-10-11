@@ -7,8 +7,13 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "npm run dev --workspace=@fieldnote/fieldnote",
-    "build": "npm run build --workspace=@fieldnote/fieldnote",
+    "dev": "npm run dev:fieldnote",
+    "dev:fieldnote": "npm run dev --workspace=@fieldnote/fieldnote",
+    "dev:storybook": "npm run dev --workspace=@fieldnote/storybook",
+    "build": "npm run build:fieldnote",
+    "build:fieldnote": "npm run build --workspace=@fieldnote/fieldnote",
+    "build:storybook": "npm run build --workspace=@fieldnote/storybook",
+    "build:tokens": "npm run build --workspace=@product/tokens",
     "typecheck": "npm run typecheck --workspaces --if-present"
   }
 }
