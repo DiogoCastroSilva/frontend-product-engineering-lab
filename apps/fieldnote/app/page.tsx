@@ -1,69 +1,56 @@
-import Image from "next/image";
+import { Button } from "@fieldnote/design-system";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main className="flex min-h-screen flex-col bg-canvas px-6 py-16 text-ink sm:px-10">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-12">
+        <header className="flex items-center justify-between border-b border-[var(--ds-color-border)] pb-5">
+          <a href="/" className="text-lg font-bold tracking-tight">fieldnote<span className="text-brand-600">.</span></a>
+          <span className="rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">FIELDWORK WORKSPACE</span>
+        </header>
+
+        <section className="grid gap-8 md:grid-cols-[1.3fr_0.7fr] md:items-end">
+          <div className="flex flex-col items-start gap-6">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-700">Fieldwork, thoughtfully organized</p>
+            <h1 className="max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">
+              Good science starts with being <span className="text-brand-600">out there.</span>
+            </h1>
+            <p className="max-w-xl text-lg leading-8 text-muted">
+              Keep field observations, species records, and team work in one calm, dependable workspace.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Button size="lg" onClick={() => alert("Fieldnote workspace is ready for the next learning milestone.")}>Explore workspace</Button>
+              <Button size="lg" variant="secondary" onClick={() => window.open("http://localhost:6006", "_blank", "noopener,noreferrer")}>Open component library</Button>
+            </div>
+          </div>
+
+          <aside className="rounded-2xl border border-[var(--ds-color-border)] bg-white p-6 shadow-sm">
+            <p className="text-sm font-medium text-muted">YOUR FIELD SEASON</p>
+            <p className="mt-3 text-3xl font-semibold">Spring survey</p>
+            <p className="mt-2 text-sm leading-6 text-muted">Boulder Creek · Riparian habitat</p>
+            <div className="my-6 h-px bg-slate-100" />
+            <div className="grid grid-cols-2 gap-4">
+              <div><p className="text-2xl font-semibold">24</p><p className="mt-1 text-sm text-muted">Observations</p></div>
+              <div><p className="text-2xl font-semibold">8</p><p className="mt-1 text-sm text-muted">Species logged</p></div>
+            </div>
+            <div className="mt-6 flex items-center gap-2 text-sm text-emerald-700"><span className="size-2 rounded-full bg-emerald-500" /> All field notes synced</div>
+          </aside>
+        </section>
+
+        <section className="grid gap-4 sm:grid-cols-3">
+          {[
+            { number: "01", title: "Capture observations", body: "Record what you see while the details are fresh." },
+            { number: "02", title: "Build shared context", body: "Keep locations, species, and notes connected." },
+            { number: "03", title: "Return to the field", body: "Spend less time organizing and more time outside." },
+          ].map((item) => (
+            <article key={item.number} className="rounded-2xl border border-[var(--ds-color-border)] bg-white p-6">
+              <p className="text-sm font-semibold text-brand-600">{item.number}</p>
+              <h2 className="mt-4 text-lg font-semibold">{item.title}</h2>
+              <p className="mt-2 text-sm leading-6 text-muted">{item.body}</p>
+            </article>
+          ))}
+        </section>
+      </div>
+    </main>
   );
 }
