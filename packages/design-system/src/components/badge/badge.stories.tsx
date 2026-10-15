@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Badge } from './badge';
+import { Badge, BadgeProps } from './badge';
 
 const meta = {
   title: 'Foundations/Badge',
@@ -29,7 +29,7 @@ export const Info: Story = { args: { variant: 'info' } };
 export const Neutral: Story = { args: { variant: 'neutral' } };
 
 export const Sizes: Story = {
-  render: (args) => (
+  render: (args: BadgeProps) => (
     <div className="flex flex-wrap items-center gap-3">
       <Badge {...args} size="sm">
         Small

@@ -13,6 +13,7 @@
     "./styles.css": "./src/styles.css"
   },
   "scripts": {
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

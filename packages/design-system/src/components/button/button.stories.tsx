@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Button } from './button';
+import { Button, ButtonProps } from './button';
 
 const meta = {
   title: 'Foundations/Button',
@@ -33,7 +33,7 @@ export const Loading: Story = { args: { loading: true, children: 'Saving' } };
 export const Disabled: Story = { args: { disabled: true } };
 
 export const Sizes: Story = {
-  render: (args) => (
+  render: (args: ButtonProps) => (
     <div className="flex flex-wrap items-center gap-3">
       <Button {...args} size="sm">
         Small
