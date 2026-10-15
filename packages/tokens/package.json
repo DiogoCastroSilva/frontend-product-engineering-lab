@@ -8,6 +8,10 @@
   "sideEffects": [
     "**/*.css"
   ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "typecheck": "tsc --noEmit"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

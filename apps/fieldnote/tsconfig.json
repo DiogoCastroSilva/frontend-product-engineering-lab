@@ -19,7 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@fieldnote/design-system": ["../../packages/design-system/src"],
+      "@fieldnote/tokens": ["../../packages/tokens/src"]
     }
   },
   "include": [

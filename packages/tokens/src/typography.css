@@ -9,8 +9,8 @@
     font-size: var(--font-size-body);
     line-height: var(--line-height-body);
     font-weight: var(--font-weight-body);
-    background-color: var(--color-background);
-    color: var(--color-text);
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
   }
 
   h1 {

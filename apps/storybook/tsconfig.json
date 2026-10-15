@@ -9,7 +9,16 @@
     "skipLibCheck": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "types": ["vite/client"]
+    "types": ["vite/client", "node"],
+    "paths": {
+      "@fieldnote/design-system": ["../../packages/design-system/src"],
+      "@fieldnote/tokens": ["../../packages/tokens/src"]
+    }
   },
-  "include": [".storybook/**/*.ts", "../../packages/design-system/src/**/*.ts", "../../packages/design-system/src/**/*.tsx"]
+  "include": [
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx",
+    "../../packages/design-system/src/**/*.ts",
+    "../../packages/design-system/src/**/*.tsx"
+  ]
 }

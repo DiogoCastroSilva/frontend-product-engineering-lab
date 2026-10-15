@@ -46,7 +46,6 @@ Storybook is available at http://localhost:6006 by default.
 4. Import the component from `@fieldnote/design-system` where needed; do not duplicate its implementation in either app.
 5. Check keyboard focus, disabled behavior, accessible names, and responsive behavior in Storybook and the product context.
 
-
 ## Troubleshooting Storybook
 
 If Storybook reports that it cannot find `@storybook/react-vite/preset`, reinstall workspace dependencies from the repository root so the framework package is present:

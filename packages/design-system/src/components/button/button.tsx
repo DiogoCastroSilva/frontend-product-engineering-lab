@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import type { ButtonHTMLAttributes, MouseEvent, ReactNode } from 'react';
+import type { ButtonHTMLAttributes, MouseEvent, ReactNode } from "react";
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
-export type ButtonSize = 'sm' | 'md' | 'lg';
+export type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
+export type ButtonSize = "sm" | "md" | "lg";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Visual intent of the button. */
@@ -17,29 +17,29 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'bg-primary text-surface enabled:not-aria-disabled:hover:bg-primary-hover enabled:not-aria-disabled:active:bg-primary-active',
+    "bg-primary text-surface enabled:not-aria-disabled:hover:bg-primary-hover enabled:not-aria-disabled:active:bg-primary-active",
   secondary:
-    'border border-primary bg-surface text-primary enabled:not-aria-disabled:hover:bg-primary-subtle enabled:not-aria-disabled:hover:text-primary',
+    "border border-primary bg-surface text-primary enabled:not-aria-disabled:hover:bg-primary-subtle enabled:not-aria-disabled:hover:text-primary",
   ghost:
-    'bg-transparent text-primary enabled:not-aria-disabled:hover:bg-primary-subtle',
+    "bg-transparent text-primary enabled:not-aria-disabled:hover:bg-primary-subtle",
   danger:
-    'bg-danger text-surface enabled:not-aria-disabled:hover:bg-danger-subtle enabled:not-aria-disabled:hover:text-danger',
+    "bg-danger text-surface enabled:not-aria-disabled:hover:bg-danger-subtle enabled:not-aria-disabled:hover:text-danger",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: 'min-h-8 px-3 text-sm',
-  md: 'min-h-10 px-4 text-sm',
-  lg: 'min-h-12 px-5 text-base',
+  sm: "min-h-8 px-3 text-sm",
+  md: "min-h-10 px-4 text-sm",
+  lg: "min-h-12 px-5 text-base",
 };
 
 export function Button({
-  variant = 'primary',
-  size = 'md',
+  variant = "primary",
+  size = "md",
   loading = false,
   disabled,
-  className = '',
+  className = "",
   children,
-  type = 'button',
+  type = "button",
   onClick,
   ...props
 }: ButtonProps) {
@@ -63,16 +63,16 @@ export function Button({
       aria-disabled={loading || undefined}
       aria-busy={loading || undefined}
       className={[
-        'inline-flex items-center justify-center gap-2 rounded-md font-semibold',
-        'transition-colors duration-150',
-        'disabled:cursor-not-allowed disabled:opacity-50',
-        'aria-disabled:cursor-not-allowed aria-disabled:opacity-50',
+        "inline-flex items-center justify-center gap-2 rounded-md font-semibold",
+        "transition-colors duration-150",
+        "disabled:cursor-not-allowed disabled:opacity-50",
+        "aria-disabled:cursor-not-allowed aria-disabled:opacity-50",
         variantClasses[variant],
         sizeClasses[size],
         className,
       ]
         .filter(Boolean)
-        .join(' ')}
+        .join(" ")}
     >
       {loading ? (
         <>

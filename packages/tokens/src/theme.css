@@ -1,5 +1,8 @@
 @theme inline {
   --font-sans: var(--font-inter);
+  --text-body: var(--font-size-body);
+  --text-body--line-height: var(--line-height-body);
+  --text-body--font-weight: var(--font-weight-body);
 
   --text-h1: var(--font-size-h1);
   --text-h1--line-height: var(--line-height-h1);
@@ -24,8 +27,4 @@
   --text-h6: var(--font-size-h6);
   --text-h6--line-height: var(--line-height-h6);
   --text-h6--font-weight: var(--font-weight-h6);
-
-  --text-body: var(--font-size-body);
-  --text-body--line-height: var(--line-height-body);
-  --text-body--font-weight: var(--font-weight-body);
 }

@@ -1,0 +1,12 @@
+# Build output
+.next/
+storybook-static/
+dist/
+out/
+
+# Generated types
+next-env.d.ts
+*.tsbuildinfo
+
+# Dependencies
+node_modules/

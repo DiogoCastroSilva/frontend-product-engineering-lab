@@ -1,3 +1,6 @@
 @import "@fieldnote/design-system/styles.css";
 
-/* App-specific styles can be added here. Global design tokens are imported from the shared design system. */
+/* App-specific content scanning so Tailwind discovers utility class names
+   used in the Next.js app directory.  The design-system already scans its
+   own src via @source "./" in styles.css. */
+@source "./";

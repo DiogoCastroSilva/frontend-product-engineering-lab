@@ -1,10 +1,30 @@
 @import "tailwindcss";
+
 @import "@fieldnote/tokens/tokens.css";
 @import "@fieldnote/tokens/theme.css";
 @import "@fieldnote/tokens/typography.css";
 
-/* Include shared package source when Tailwind runs from a consuming app. */
+/*
+ * Scan the design-system source for utility class names in components and
+ * stories.  Consuming apps add their own @source directives for their files.
+ */
 @source "./";
+@source "../../apps/*/app/**/*.{ts,tsx}";
+@source "../../apps/*/src/**/*.{ts,tsx}";
+@source "../../apps/*/pages/**/*.{ts,tsx}";
+
+/*
+ * Default border color for bare `border` / `border-b` utilities.
+ * Specific border color utilities (border-primary, border-danger, etc.)
+ * in @layer utilities will override this via higher specificity.
+ */
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-border);
+  }
+}
 
 :root {
   color-scheme: light;
