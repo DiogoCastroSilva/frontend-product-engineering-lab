@@ -17,7 +17,6 @@ export default tseslint.config(
     files: ['**/*.{ts,tsx}'],
     plugins: {
       'react-hooks': reactHooks,
-      'jsx-a11y': jsxA11y,
     },
     rules: {
       // Catch invalid React hook usage and dependency mistakes.

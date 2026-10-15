@@ -17,13 +17,13 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'bg-[var(--color-primary)] text-[var(--color-surface)] enabled:not-aria-disabled:hover:bg-[var(--color-primary-hover)] enabled:not-aria-disabled:active:bg-[var(--color-primary-active)]',
+    'bg-primary text-surface enabled:not-aria-disabled:hover:bg-primary-hover enabled:not-aria-disabled:active:bg-primary-active',
   secondary:
-    'border border-[var(--color-primary)] bg-[var(--color-surface)] text-[var(--color-primary)] enabled:not-aria-disabled:hover:bg-[var(--color-primary-subtle)] enabled:not-aria-disabled:hover:text-[var(--color-primary)]',
+    'border border-primary bg-surface text-primary enabled:not-aria-disabled:hover:bg-primary-subtle enabled:not-aria-disabled:hover:text-primary',
   ghost:
-    'bg-transparent text-[var(--color-primary)] enabled:not-aria-disabled:hover:bg-[var(--color-primary-subtle)]',
+    'bg-transparent text-primary enabled:not-aria-disabled:hover:bg-primary-subtle',
   danger:
-    'bg-[var(--color-danger)] text-[var(--color-surface)] enabled:not-aria-disabled:hover:bg-[var(--color-danger-subtle)] enabled:not-aria-disabled:hover:text-[var(--color-danger)]',
+    'bg-danger text-surface enabled:not-aria-disabled:hover:bg-danger-subtle enabled:not-aria-disabled:hover:text-danger',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {

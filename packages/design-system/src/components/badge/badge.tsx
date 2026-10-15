@@ -1,11 +1,7 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 
 export type BadgeVariant =
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'info'
-  | 'neutral';
+  'success' | 'warning' | 'danger' | 'info' | 'neutral';
 
 export type BadgeSize = 'sm' | 'md' | 'lg';
 
@@ -18,15 +14,11 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 const variantClasses: Record<BadgeVariant, string> = {
-  success:
-    'bg-[var(--color-success-subtle)] text-[var(--color-success)] border-[var(--color-success)] border-1',
-  warning:
-    'bg-[var(--color-warning-subtle)] text-[var(--color-warning)] border-[var(--color-warning)] border-1',
-  danger:
-    'bg-[var(--color-danger-subtle)] text-[var(--color-danger)] border-[var(--color-danger)] border-1',
-  info: 'bg-[var(--color-info-subtle)] text-[var(--color-info)] border-[var(--color-info)] border-1',
-  neutral:
-    'bg-[var(--color-neutral-subtle)] text-[var(--color-neutral)] border-[var(--color-neutral)] border-1',
+  success: 'bg-success-subtle text-success border border-success',
+  warning: 'bg-warning-subtle text-warning border border-warning',
+  danger: 'bg-danger-subtle text-danger border border-danger',
+  info: 'bg-info-subtle text-info border border-info',
+  neutral: 'bg-neutral-subtle text-neutral border border-neutral',
 };
 
 const sizeClasses: Record<BadgeSize, string> = {
