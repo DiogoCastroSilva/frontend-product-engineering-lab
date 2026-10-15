@@ -1,5 +1,5 @@
+import baseConfig from "@diogozx-org/eslint-config";
 import reactHooks from "eslint-plugin-react-hooks";
-import tseslint from "typescript-eslint";
 
 /**
  * Inline ESLint rule that prevents arbitrary Tailwind CSS values
@@ -50,7 +50,7 @@ const tailwindNoArbitrary = {
   },
 };
 
-export default tseslint.config(
+export default [
   {
     ignores: [
       "**/node_modules/**",
@@ -60,7 +60,7 @@ export default tseslint.config(
       "**/coverage/**",
     ],
   },
-  ...tseslint.configs.recommended,
+  ...baseConfig,
   {
     plugins: {
       "react-hooks": reactHooks,
@@ -80,4 +80,4 @@ export default tseslint.config(
       "@typescript-eslint/consistent-type-imports": "error",
     },
   },
-);
+];
