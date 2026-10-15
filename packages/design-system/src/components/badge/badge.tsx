@@ -1,6 +1,4 @@
-'use client';
-
-import type { ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 
 export type BadgeVariant =
   | 'success'
@@ -8,15 +6,14 @@ export type BadgeVariant =
   | 'danger'
   | 'info'
   | 'neutral';
+
 export type BadgeSize = 'sm' | 'md' | 'lg';
 
-export interface BadgeProps {
+export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   /** Visual intent of the badge. */
   variant?: BadgeVariant;
   /** Controls the badge's height and horizontal padding. */
   size?: BadgeSize;
-  /** Shows a compact progress indicator and prevents duplicate interaction. */
-  loading?: boolean;
   className: string;
   children: ReactNode;
 }
@@ -40,9 +37,8 @@ const sizeClasses: Record<BadgeSize, string> = {
 };
 
 export function Badge({
-  variant = 'success',
+  variant = 'neutral',
   size = 'md',
-  loading = false,
   className = '',
   children,
   ...props
@@ -50,12 +46,9 @@ export function Badge({
   return (
     <span
       {...props}
-      aria-busy={loading || undefined}
       className={[
         'inline-flex items-center justify-center gap-2 rounded-full',
         'transition-colors duration-150',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2',
-        'disabled:cursor-not-allowed disabled:opacity-50',
         variantClasses[variant],
         sizeClasses[size],
         className,
@@ -63,17 +56,7 @@ export function Badge({
         .filter(Boolean)
         .join(' ')}
     >
-      {loading ? (
-        <>
-          <span
-            aria-hidden="true"
-            className="size-4 animate-spin rounded-full border-2 border-current border-r-transparent"
-          />
-          <span>{children}</span>
-        </>
-      ) : (
-        children
-      )}
+      {children}
     </span>
   );
 }
