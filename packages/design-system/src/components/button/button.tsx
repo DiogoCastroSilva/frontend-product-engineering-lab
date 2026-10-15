@@ -2,7 +2,7 @@
 
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -17,10 +17,12 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover)]',
+    'bg-[var(--color-primary)] text-[var(--color-surface)] hover:bg-[var(--color-primary-hover)] active:bg-[var(--color-primary-active)]',
   secondary:
-    'border border-[var(--color-primary)] bg-[var(--color-surface)] text-[var(--color-primary)] hover:bg-slate-50',
+    'border border-[var(--color-primary)] bg-[var(--color-surface)] text-[var(--color-primary)] hover:bg-[var(--color-primary-subtle)] hover:text-[var(--color-primary)]',
   ghost: 'bg-transparent text-[var(--color-primary)] hover:bg-slate-100',
+  danger:
+    'bg-[var(--color-danger)] text-[var(--color-surface)] hover:bg-[var(--color-danger-subtle)] hover:text-[var(--color-danger)]',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -50,7 +52,6 @@ export function Button({
       className={[
         'inline-flex items-center justify-center gap-2 rounded-md font-semibold',
         'transition-colors duration-150',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2',
         'disabled:cursor-not-allowed disabled:opacity-50',
         variantClasses[variant],
         sizeClasses[size],
