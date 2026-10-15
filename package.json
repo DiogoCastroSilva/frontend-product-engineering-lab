@@ -13,7 +13,6 @@
     "build": "npm run build:fieldnote",
     "build:fieldnote": "npm run build --workspace=@fieldnote/fieldnote",
     "build:storybook": "npm run build --workspace=@fieldnote/storybook",
-    "build:tokens": "npm run build --workspace=@fieldnote/tokens",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
     "format": "prettier --write .",
