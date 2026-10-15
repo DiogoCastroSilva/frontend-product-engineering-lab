@@ -16,13 +16,14 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@product/tokens": "^1.0.0"
+    "@fieldnote/tokens": "^1.0.0"
   },
   "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@storybook/react-vite": "10.6.1",
     "@types/react": "^19.0.0",
     "typescript": "^5.0.0"
   }

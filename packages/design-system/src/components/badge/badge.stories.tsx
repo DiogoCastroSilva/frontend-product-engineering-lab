@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Badge } from './badge';
 
 const meta = {
@@ -16,8 +16,6 @@ const meta = {
       options: ['success', 'warning', 'danger', 'info', 'neutral'],
     },
     size: { control: 'inline-radio', options: ['sm', 'md', 'lg'] },
-    loading: { control: 'boolean' },
-    disabled: { control: 'boolean' },
   },
 } satisfies Meta<typeof Badge>;
 
@@ -29,8 +27,6 @@ export const Warning: Story = { args: { variant: 'warning' } };
 export const Danger: Story = { args: { variant: 'danger' } };
 export const Info: Story = { args: { variant: 'info' } };
 export const Neutral: Story = { args: { variant: 'neutral' } };
-
-export const Loading: Story = { args: { loading: true, children: 'Saving' } };
 
 export const Sizes: Story = {
   render: (args) => (

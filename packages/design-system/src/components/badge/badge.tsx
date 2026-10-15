@@ -14,7 +14,6 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   variant?: BadgeVariant;
   /** Controls the badge's height and horizontal padding. */
   size?: BadgeSize;
-  className: string;
   children: ReactNode;
 }
 
@@ -39,7 +38,6 @@ const sizeClasses: Record<BadgeSize, string> = {
 export function Badge({
   variant = 'neutral',
   size = 'md',
-  className = '',
   children,
   ...props
 }: BadgeProps) {
@@ -51,7 +49,6 @@ export function Badge({
         'transition-colors duration-150',
         variantClasses[variant],
         sizeClasses[size],
-        className,
       ]
         .filter(Boolean)
         .join(' ')}

@@ -1,7 +1,7 @@
 @import "tailwindcss";
-@import "@product/tokens/tokens.css";
-@import "@product/tokens/theme.css";
-@import "@product/tokens/typography.css";
+@import "@fieldnote/tokens/tokens.css";
+@import "@fieldnote/tokens/theme.css";
+@import "@fieldnote/tokens/typography.css";
 
 /* Include shared package source when Tailwind runs from a consuming app. */
 @source "./";

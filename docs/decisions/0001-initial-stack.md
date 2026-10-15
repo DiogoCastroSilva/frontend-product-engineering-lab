@@ -51,7 +51,7 @@ The design system has two consumers: Fieldnote and a separate Storybook applicat
 - **Fieldnote:** Next.js with React and TypeScript, styled with Tailwind CSS.
 - **Storybook:** A separate app at `apps/storybook` for isolated component development, interactive examples, and documentation.
 - **Components:** One private workspace package at `packages/design-system`, named `@fieldnote/design-system`, consumed by both apps.
-- **Tokens:** Retain `packages/tokens` as `@product/tokens` for typed token exports and shared token CSS. The design-system package consumes its CSS entry point. Keep token categories together rather than creating one package per category.
+- **Tokens:** Retain `packages/tokens` as `@fieldnote/tokens` for typed token exports and shared token CSS. The design-system package consumes its CSS entry point. Keep token categories together rather than creating one package per category.
 - **Stories:** Store component implementations and their `.stories.tsx` files together in the design-system package. Storybook configuration and preview environment live in `apps/storybook`.
 - **Distribution:** Keep packages private and workspace-local; do not publish them unless a concrete need appears.
 - **Components:** Build foundational components using semantic HTML, TypeScript, tokens, and Tailwind. Evaluate accessible primitives such as Radix for complex interactions needing robust keyboard and focus management.

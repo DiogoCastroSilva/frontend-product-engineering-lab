@@ -1,10 +1,13 @@
 {
-  "name": "@product/tokens",
+  "name": "@fieldnote/tokens",
   "version": "1.0.0",
   "private": true,
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -14,10 +17,6 @@
     "./tokens.css": "./src/tokens.css",
     "./theme.css": "./src/theme.css",
     "./typography.css": "./src/typography.css"
-  },
-  "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
-    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "tsup": "^8.0.0",
