@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fieldnote
 
-## Getting Started
+Fieldnote is the consuming product mock in this repository: an interface for environmental fieldwork and biodiversity monitoring. The concept gives the design system a realistic product context instead of developing components only as isolated demos.
 
-First, run the development server:
+This is a learning/portfolio application. Treat the product description as domain context, not proof that every workflow described below is already implemented.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Product context
+
+People doing fieldwork may need to record observations, connect findings to a site or survey, keep notes usable in the field, and review monitoring data later. The interface should favor clear information hierarchy, efficient data capture, readable status, and resilient interaction patterns.
+
+Possible scenarios for future UI work include:
+
+- viewing monitoring sites and survey sessions;
+- recording a biodiversity observation or field note;
+- selecting or reviewing a species identification;
+- understanding draft, submitted, or needs-review states;
+- reviewing observations over time.
+
+These are example scenarios to guide design discussions, not a fixed roadmap. Before implementing a workflow, check the current application and agree on the scope.
+
+## Engineering role
+
+- Fieldnote consumes shared components from `@fieldnote/design-system`.
+- Reusable components belong in `packages/design-system`, not in app-local copies.
+- Global design tokens and typography come from the shared token/design-system styles.
+- App-specific routes, page composition, and domain behavior belong here.
+
+When building a screen, use the product context to test component decisions against realistic content, empty states, long names, validation, narrow viewports, and accessible interaction.
+
+## Development
+
+Run commands from the repository root:
+
+```sh
+npm run dev:fieldnote
+npm run lint
+npm run typecheck
+npm run build:fieldnote
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See the root [README](../../README.md) and [AGENTS.md](../../AGENTS.md) for repository commands and shared conventions.
