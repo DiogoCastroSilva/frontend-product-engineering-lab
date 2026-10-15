@@ -1,20 +1,37 @@
 @import '@fontsource-variable/inter';
 
 @theme {
-  --color-primary: #1e500b;
-  --color-primary-hover: #174d31;
-  --color-secondary: #475b69;
-
-  --color-success: #16a344;
-  --color-warning: #f99e0b;
-  --color-error: #dc2626;
+  /* Brand & neutral colors */
+  --color-primary: #1e5c3a;
+  --color-primary-hover: #154530;
+  --color-primary-active: #0f3322;
+  --color-primary-subtle: #e4f0e8;
 
   --color-background: #fafaf8;
   --color-surface: #ffffff;
+  --color-surface-subtle: #f2f4f0;
+  --color-border: #dde1db;
+  --color-border-strong: #79827c;
+
   --color-text: #1f2937;
-  --color-text-secondary: #485563;
-  --color-text-muted: #687280;
-  --color-border: #e5e7eb;
+  --color-text-secondary: #475467;
+  --color-text-muted: #5b6670;
+
+  --color-secondary: #475b69;
+  --color-focus-ring: #1d4ed8;
+
+  /* Status (solid · icons, borders, charts ≥3:1) */
+  --color-success: #14532d;
+  --color-warning: #6b3a00;
+  --color-danger: #8f1d1d;
+  --color-info: #1a4a87;
+  --color-neutral: #3a4651;
+
+  --color-success-subtle: #e1f3e7;
+  --color-warning-subtle: #fcebc8;
+  --color-danger-subtle: #fde6e6;
+  --color-info-subtle: #e0ecfa;
+  --color-neutral-subtle: #ecefea;
 
   --radius-sm: 0.25rem;
   --radius-md: 0.375rem;
@@ -25,6 +42,8 @@
   --spacing-md: 0.75rem;
   --spacing-lg: 1rem;
   --spacing-xl: 1.5rem;
+
+  --shadow-sm: 0 1px 2px #1f29371a;
 
   --font-inter: 'Inter Variable', sans-serif;
 
