@@ -24,3 +24,5 @@ npm run typecheck
 The development server defaults to [http://localhost:6006](http://localhost:6006).
 
 Use stories to make the supported component API and key visual/interaction states visible. Storybook accessibility tooling helps find issues but does not replace keyboard testing, contrast checks, or automated tests.
+
+See the root [AGENTS.md](../../AGENTS.md) for shared architecture and AI-agent instructions.
