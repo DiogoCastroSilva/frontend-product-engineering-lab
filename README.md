@@ -8,6 +8,17 @@ The first focus is a small, reusable design system used by a realistic product m
 
 AI-assisted development is part of the workflow, but generated code should still be understandable, reviewed, tested, and consistent with the architecture. See [AGENTS.md](./AGENTS.md) for repository-wide instructions for AI coding tools.
 
+## Learning direction
+
+The work is intentionally staged rather than tied to a deadline:
+
+1. **Establish the foundation:** semantic tokens, typography, component APIs, accessibility, lint/type checks, and a reliable workspace/CI setup.
+2. **Prove the system in a product:** use Fieldnote's environmental fieldwork and biodiversity-monitoring context to expose real content, validation, empty/loading/error states, and responsive needs.
+3. **Strengthen quality:** add targeted component tests, accessibility checks, useful stories, and concise architecture decisions as the code earns them.
+4. **Explore AI product patterns later:** only when there is a concrete user problem where AI adds value. Keep AI interactions transparent, testable, and integrated into the product rather than adding a chatbot as a demo feature.
+
+These are priorities, not claims that every item is already implemented or a fixed feature roadmap.
+
 ## Workspace map
 
 - `apps/fieldnote` — a product mock for environmental fieldwork and biodiversity monitoring. It provides a realistic context for designing interfaces for field observations and monitoring workflows; it is a learning environment, not a claim that a complete production product exists.
