@@ -17,7 +17,6 @@
     "lint": "npm run lint --workspaces --if-present",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "postinstall": "npm rebuild",
     "verify": "npm run lint && npm run typecheck && npm run format:check"
   },
   "devDependencies": {
