@@ -21,11 +21,13 @@
     "verify": "npm run lint && npm run typecheck && npm run format:check"
   },
   "devDependencies": {
-    "@diogozx-org/eslint-config": "^2.0.0",
+    "@diogozx-org/eslint-config": "2.1.0",
     "eslint": "^9.39.5",
+    "eslint-config-next": "16.4.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-storybook": "^10.6.2",
+    "next": "16.4.0",
     "prettier": "^3.9.10",
     "typescript-eslint": "^8.71.2"
   }

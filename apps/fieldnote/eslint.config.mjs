@@ -1,21 +1,12 @@
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
-import { defineConfig, globalIgnores } from "eslint/config";
+import nextConfig from "@diogozx-org/eslint-config/next";
 import sharedConfig from "../../eslint.config.mjs";
 
-const eslintConfig = defineConfig([
-  ...sharedConfig,
-  ...nextVitals,
-  ...nextTs,
-
-  // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ]),
-]);
+/**
+ * Extends the shared root config (react-hooks, tailwind constraints, TS hygiene)
+ * with the @diogozx-org/eslint-config Next.js preset, which composes the
+ * shared TypeScript/Prettier config with Next.js Core Web Vitals + TypeScript
+ * rules and the standard global ignores (.next, out, build, next-env.d.ts).
+ */
+const eslintConfig = [...sharedConfig, ...nextConfig];
 
 export default eslintConfig;
