@@ -65,6 +65,7 @@ export function Button({
       className={[
         "inline-flex items-center justify-center gap-2 rounded-md font-semibold",
         "transition-colors duration-150",
+        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring",
         "disabled:cursor-not-allowed disabled:opacity-50",
         "aria-disabled:cursor-not-allowed aria-disabled:opacity-50",
         variantClasses[variant],
