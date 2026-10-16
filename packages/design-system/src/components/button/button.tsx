@@ -20,8 +20,7 @@ const variantClasses: Record<ButtonVariant, string> = {
     "bg-primary text-surface enabled:not-aria-disabled:hover:bg-primary-hover enabled:not-aria-disabled:active:bg-primary-active",
   secondary:
     "border border-primary bg-surface text-primary enabled:not-aria-disabled:hover:bg-primary-subtle enabled:not-aria-disabled:hover:text-primary",
-  ghost:
-    "bg-transparent text-primary enabled:not-aria-disabled:hover:bg-primary-subtle",
+  ghost: "bg-transparent text-primary enabled:not-aria-disabled:hover:bg-primary-subtle",
   danger:
     "bg-danger text-surface enabled:not-aria-disabled:hover:bg-danger-subtle enabled:not-aria-disabled:hover:text-danger",
 };
@@ -65,6 +64,7 @@ export function Button({
       className={[
         "inline-flex items-center justify-center gap-2 rounded-md font-semibold",
         "transition-colors duration-150",
+        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring",
         "disabled:cursor-not-allowed disabled:opacity-50",
         "aria-disabled:cursor-not-allowed aria-disabled:opacity-50",
         variantClasses[variant],
