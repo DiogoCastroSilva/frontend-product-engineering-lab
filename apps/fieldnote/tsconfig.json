@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -17,27 +13,21 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "@fieldnote/design-system": [
-        "../../packages/design-system/src"
-      ],
-      "@fieldnote/tokens": [
-        "../../packages/tokens/src"
-      ]
-    },
-    "exactOptionalPropertyTypes": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noUncheckedIndexedAccess": true
+      "@/*": ["./*"],
+      "@fieldnote/design-system": ["../../packages/design-system/src"],
+      "@fieldnote/tokens": ["../../packages/tokens/src"]
+    }
   },
   "include": [
     "next-env.d.ts",
@@ -47,7 +37,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
