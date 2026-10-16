@@ -1,15 +1,6 @@
 {
+  "extends": "@diogozx-org/tsconfig/vite.json",
   "compilerOptions": {
-    "target": "ES2020",
-    "lib": ["DOM", "ES2020"],
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "jsx": "react-jsx",
-    "strict": true,
-    "skipLibCheck": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "types": ["vite/client", "node"],
     "paths": {
       "@fieldnote/design-system": ["../../packages/design-system/src"],
       "@fieldnote/tokens": ["../../packages/tokens/src"]

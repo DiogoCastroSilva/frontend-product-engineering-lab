@@ -22,6 +22,8 @@
   },
   "devDependencies": {
     "@diogozx-org/eslint-config": "2.1.0",
+    "@diogozx-org/prettier-config": "^1.0.0",
+    "@diogozx-org/tsconfig": "^1.0.0",
     "eslint": "^9.39.5",
     "eslint-config-next": "16.4.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
