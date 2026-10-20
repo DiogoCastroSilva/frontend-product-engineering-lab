@@ -19,6 +19,10 @@ The work is intentionally staged rather than tied to a deadline:
 
 These are priorities, not claims that every item is already implemented or a fixed feature roadmap.
 
+## Project documentation
+
+The versioned product/design handoff lives in [docs/README.md](./docs/README.md): the [standalone design reference](./docs/design/README.md), [roadmap](./docs/roadmap.md), [feature tickets](./docs/features/README.md), and [architecture decisions](./docs/decisions/).
+
 ## Workspace map
 
 - `apps/fieldnote` — a product mock for environmental fieldwork and biodiversity monitoring. It provides a realistic context for designing interfaces for field observations and monitoring workflows; it is a learning environment, not a claim that a complete production product exists.
